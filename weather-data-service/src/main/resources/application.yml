@@ -1,0 +1,15 @@
+server:
+  port: 9002
+
+eureka:
+  instance:
+    prefer-ip-address: true     #是否使用ip注册到eureka,默认主机名,注意多网卡,内外ip不一致情况.
+    ip-address: xx.xx.xx.xxx   #指定自己要注册贷eureka上的ip
+  client:
+    service-url:
+      defaultZone: http://xx.xxx.xxx.xx:5673/eureka
+
+spring:
+  application:
+    name:  weather-data
+
