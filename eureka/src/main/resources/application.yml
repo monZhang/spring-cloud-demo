@@ -1,0 +1,21 @@
+server:
+  port: 5672
+
+spring:
+  application:
+    name: eureka                             #应用名称
+
+eureka:
+  instance:
+    hostname: eureka-server
+    lease-expiration-duration-in-seconds: 3  #服务过期时间配置,超过这个时间没有接收到心跳EurekaServer就会将这个实例剔除,默认90s,在eureka的客户端配置
+    lease-renewal-interval-in-seconds: 1     #服务刷新时间配置，每隔这个时间会主动心跳一次,默认30s,在eureka的客户端配置
+  client:
+    register-with-eureka: false              #是否注册到其他eureka上
+    fetch-registry: false                    #是否从其他eureka上获取注册信息
+    service-url:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+  server:
+    enable-self-preservation: false          #关闭自我保护(短时间内多个实例掉线的情况eureka不会注销实例进入保护模式,默认开启)
+    eviction-interval-timer-in-ms: 4000      #清理间隔（单位毫秒，默认是60*1000）
+
