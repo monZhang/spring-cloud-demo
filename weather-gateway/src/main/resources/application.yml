@@ -1,0 +1,28 @@
+server:
+  port: 6674
+
+spring:
+  application:
+    name: zuul-gateway
+
+eureka:
+  instance:
+    leaseRenewalIntervalInSeconds: 1
+    leaseExpirationDurationInSeconds: 3
+    prefer-ip-address: true
+    ip-address: xxx.xxx.xx.xxx
+  client:
+    service-url:
+      defaultZone: http://xxx.xxx.xxx.xx:5673/eureka
+
+zuul:
+  routes:
+  prefix: /api
+  strip-prefix: false             #是否过滤掉前缀, 此处只针对zuul.prefix=xxx 设置的前缀有效.
+    w-data:                       #名称随意起
+      path: /weather/**           #设置匹配规则,时间转发地址为/**, 前面的/weather不会带上(默认情况)
+      serviceId: weather-data     #设置服务应用的名称
+      stripPrefix: false          #是否过滤掉前缀, 针对path设置的前缀有效,此处为/weather/**.
+    c-data:
+      path: /citys
+      serviceId: city-data
