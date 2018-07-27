@@ -1,0 +1,21 @@
+server:
+  port: 8089
+spring:
+  application:
+    name: sc-config
+  cloud:
+    config:
+      server:
+        git:
+          uri: git@git.xxxxx.git                  #git地址
+          search-paths: repositoryName            #仓库目录
+          username: xxx
+          password: xxx
+
+eureka:
+  instance:
+    prefer-ip-address: true
+    ip-address: xxx.xxx.xx.xx
+  client:
+    service-url:
+      defaultZone: http://xxx.xxx.xxx:5673/eureka/
