@@ -17,19 +17,18 @@ import java.util.List;
 @RestController
 public class FeignWeatherController {
     @Autowired
-    private FeignCityDataService cityDataService;
+    private FeignCityDataService feignCityDataService;
     @Autowired
     private FeignWeatherDataService weatherDataService;
 
     @GetMapping("/f/citys")
     public List<String> citys() {
-        return cityDataService.citys();
+        return feignCityDataService.citys();
     }
 
     @GetMapping("/f/{city}")
     public ResponseBody weatherDetail(@PathVariable String city) {
         return weatherDataService.wDetail(city);
     }
-
 
 }

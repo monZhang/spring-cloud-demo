@@ -5,6 +5,11 @@ spring:
   application:
     name: weather-client
 
+
+feign:
+  hystrix:
+    enabled: true   # 开启Feign的hystrix支持
+
 eureka:
   instance:
     lease-expiration-duration-in-seconds: 3  #服务过期时间配置,超过这个时间没有接收到心跳EurekaServer就会将这个实例剔除,默认90s
@@ -12,7 +17,7 @@ eureka:
     prefer-ip-address: true                  #是否使用ip注册到eureka,默认主机名,注意多网卡,内外ip不一致情况.
   client:
     service-url:
-      defaultZone: http://xx.xxx.xxx.xxx:5673/eureka  #指定eureka的地址
+      defaultZone: http://47.75.103.223:5673/eureka  #指定eureka的地址
 hystrix:
   command:
     default:
